@@ -100,15 +100,46 @@
 
 
 // date time 
+//var date = new DateTime(2002,03,05,13,20,30);
+//var currentDate = DateTime.Now;
+//var names = new List<int>();
 
-var date = new DateTime(2002,03,05,13,20,30);
-var currentDate = DateTime.Now;
-var names = new List<int>();
 
+//Console.WriteLine(currentDate.ToShortDateString());
+//Console.WriteLine(currentDate.ToShortTimeString());
+//Console.WriteLine("Year is :" + date.Year);
+//Console.WriteLine("Month is :" + date.Month);
+//Console.WriteLine("Date is :" + date.DayOfWeek);
 
-Console.WriteLine(currentDate.ToShortDateString());
-Console.WriteLine(currentDate.ToShortTimeString());
-Console.WriteLine("Year is :" + date.Year);
-Console.WriteLine("Month is :" + date.Month);
-Console.WriteLine("Date is :" + date.DayOfWeek);
+//our first class
+
+Console.WriteLine("Enter wight..");
+int wight = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter Hight...");
+int hight = Convert.ToInt32(Console.ReadLine());
+
+Rectangle reglangal = new Rectangle();
+
+reglangal.Rectang(hight, wight);
+
+Console.WriteLine("\n");
+Console.WriteLine($"hight = {hight} '\n' wight = {wight}\n summing = {reglangal.sum}");
+
 Console.ReadLine();
+class Rectangle
+{
+    int wight;
+    int hight;
+
+    public void Rectang(int hight,int wight)
+    {
+        wight = wight;
+        hight = hight;
+    }
+
+    public void sum()
+    {
+        int sum = wight * hight;
+        Console.WriteLine(sum);
+    }
+}
