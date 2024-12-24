@@ -184,92 +184,113 @@
 //    }
 //}
 
-///////////////////////////////////////Method overloding
+///////////////////////////////////////Method overloding//////using optional parameeters
 
-//MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha");
+MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha",2);
 
-//medi.ResheduleDate(07, 20);
-//medi.AddDateReshedule(2, 5);
-//Console.WriteLine(medi._date);
+var printMedi = new medicalAppoimentPrint();
 
-//Console.ReadLine();
+printMedi.print(medi);
 
-//class MedicalAppointment
-//{
-//    string _petientName;
-//    int _age;
-//    public DateTime _date;
+Console.ReadLine();
 
-//    public MedicalAppointment(string petientName, int age, DateTime date)
-//    {
-//        _petientName = petientName;
-//        _age = age;
-//        _date = date;
-//    }
 
-//    public MedicalAppointment(string petientName) : this(petientName,7)
-//    {
+class medicalAppoimentPrint
+{
+    public void print(MedicalAppointment medicalA)
+    {
+        Console.WriteLine("Prind medical appoiment details" + "\n"+"Name : " + medicalA.GetPetionsName() + "\n" + "Recive date :" + medicalA.GetDate());
+    }
+}
+class MedicalAppointment
+{
+    string _petientName;
+    int _age;
+    DateTime _date;
 
-//    }
+    public MedicalAppointment(string petientName, int age, DateTime date)
+    {
+        _petientName = petientName;
+        _age = age;
+        _date = date;
+    }
+    public DateTime GetDate()=> _date;
+    public string GetPetionsName ()=> _petientName.ToString();
+    public int GetAge() => _age;
 
-//    public MedicalAppointment(string petientName, int daysFromNow)
-//    {
-//        _petientName=petientName;
-//        _date = DateTime.Now.AddDays(daysFromNow);
-//    }
+    public MedicalAppointment(string petientName , int daysFromNow = 7)
+    {
+        _petientName = petientName;
+        _date = DateTime.Now.AddDays(daysFromNow);
+    }
 
-//    public void ResheduleDateTime(DateTime date)
-//    {
-//        _date = date;
-//    }
+    public void ResheduleDateTime(DateTime date)
+    {
+        _date = date;
+    }
 
-//    public void ResheduleDate(int month,int day)
-//    {
-//        _date = new DateTime(_date.Year, month, day);
-//    }
+    public void ResheduleDate(int month, int day)
+    {
+        _date = new DateTime(_date.Year, month, day);
+    }
 
-//    public void AddDateReshedule(int addMonth, int addDay)
-//    {
-//        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
-//    }
-//}
+    public void AddDateReshedule(int addMonth, int addDay)
+    {
+        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
+    }
+}
 
 /////////////////////////////////////////////Using Expression boding methods 
 ///
 
-HotelBooking hotel = new HotelBooking("Sudeera",0703625417, new DateTime(2024,05,07),new DateTime(2024,05,08),true,2800);
+//HotelBooking hotel = new HotelBooking("Sudeera",0703625417, new DateTime(),new DateTime(),true,2800);
+
+//HotelBookingPrint hotelBook = new HotelBookingPrint();
 
 
-Console.WriteLine("\t\t\t"+"recive date :" + hotel._recevationDate + "\n" + "\t\t\t" + "Leave Date :" + hotel._leavingDate + "\n" + "\t\t\t" + "Payoment : " + hotel._payoment + "\n" + "\t\t\t" + "Final Payoment :" + hotel.fianlPaymentGen());
-Console.ReadLine();
+
+//Console.WriteLine("\t\t\t"+"recive date :" + hotel._recevationDate + "\n" + "\t\t\t" + "Leave Date :" + hotel._leavingDate + "\n" + "\t\t\t" + "Payoment : " + hotel._payoment + "\n" + "\t\t\t" + "Final Payoment :" + hotel.fianlPaymentGen());
+//Console.ReadLine();
+
+//class HotelBookingPrint
+//{
+//    public void print(HotelBooking hotelBooking)
+//    {
+//        Console.WriteLine("Hotel Booking Invoice Details.."+"\n"+"Recived date :" + hotelBooking.GetReceveDate() + "\n" + "Leave Date : " + hotelBooking.GetLeaveDate());
+//    }
+//}
+
+//class HotelBooking
+//{
+//    string _customerName;
+//    int _phoneNumber;
+//    DateTime _recevationDate;
+//    DateTime _leavingDate;
+//    public bool _payoment;
+//    public double Payment;
+//    public double Tax = 0.5;
 
 
-class HotelBooking
-{
-    string _customerName;
-    int _phoneNumber;
-    public DateTime _recevationDate;
-    public DateTime _leavingDate;
-    public bool _payoment;
-    public double Payment;
-    public double Tax = 0.5;
+//    public HotelBooking(string customerName, int pNumber, DateTime reciveDate, DateTime leaveDate, bool payoment, double makePayoment)
+//    {
+//        _customerName = customerName;
+//        _phoneNumber = pNumber;
+//        _recevationDate = reciveDate;
+//        _leavingDate = leaveDate;
+//        _payoment = payoment;
+//        Payment =makePayoment;
+
+//    }
+
+//    public DateTime setDateTime(DateTime date)
+//    {
+//        _recevationDate = date;
+//        return _recevationDate;
+//    }
+//    public DateTime GetReceveDate() => _recevationDate;
+
+//    public DateTime GetLeaveDate() => _leavingDate;
+//    public double fianlPaymentGen() => (Payment * Tax)+Payment;
 
 
-    public HotelBooking(string customerName, int pNumber, DateTime reciveDate, DateTime leaveDate, bool payoment, double makePayoment)
-    {
-        _customerName = customerName;
-        _phoneNumber = pNumber;
-        _recevationDate = reciveDate;
-        _leavingDate = leaveDate;
-        _payoment = payoment;
-        Payment =makePayoment;
-        
-    }
-
-    public void PaymentGenerator(double makePayoment,double tax)
-    {
-        
-    }
-
-    public double fianlPaymentGen() => (Payment * Tax)+Payment;
-}
+//}
