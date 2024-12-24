@@ -113,33 +113,111 @@
 
 //our first class
 
-Console.WriteLine("Enter wight..");
-int wight = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Enter Hight...");
-int hight = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine("Enter wight..");
+//int wight = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine("Enter Hight...");
+//int hight = Convert.ToInt32(Console.ReadLine());
 
-Rectangle reglangal = new Rectangle();
+//Rectangle reglangal = new Rectangle();
 
-reglangal.Rectang(hight, wight);
+//reglangal.Rectang(hight, wight);
 
-Console.WriteLine("\n");
-Console.WriteLine($"hight = {hight} '\n' wight = {wight}\n summing = {reglangal.sum}");
+//Console.WriteLine("\n");
+//Console.WriteLine($"hight = {hight} '\n' wight = {wight}\n summing = {reglangal.sum}");
+
+//var number = new List<int>
+//{1,2,3,4,5,6,7,8,9,10
+
+//};
+
+//foreach (int i in number)
+//Console.WriteLine();
+
+//Console.ReadLine();
+//class Rectangle
+//{
+//    int wight;
+//    int hight;
+
+//    public void Rectang(int hight,int wight)
+//    {
+//        wight = wight;
+//        hight = hight;
+//    }
+
+//    public void sum()
+//    {
+//        int sum = wight * hight;
+//        Console.WriteLine(sum);
+//    }
+//}
+
+//data hiding is making the members of the class non-public 
+
+
+//encaspulation 
+//caculator cal = new caculator();
+
+//Console.WriteLine("Enter number 1 :");
+//double Num1 = double.Parse(Console.ReadLine());
+//Console.WriteLine("Enter number 2 :");
+//double Num2 = double.Parse(Console.ReadLine());
+
+//calculation calValiue = new calculation();
+//Console.WriteLine("Sum : ");
+
+
+//Console.ReadLine();
+//class caculator
+//{
+//    public double Num1;
+//    public double Num2;
+//}
+
+//class calculation
+//{
+//    public void sum(double N1, double N2)
+//    {
+//        double sums = N1 + N2;
+//        Console.WriteLine(sums.ToString());
+
+//    }
+//}
+
+//Method overloding
+
+MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha",25,DateTime.Today);
+
+medi.ResheduleDate(07, 20);
+medi.AddDateReshedule(2, 5);
+Console.WriteLine(medi._date);
 
 Console.ReadLine();
-class Rectangle
-{
-    int wight;
-    int hight;
 
-    public void Rectang(int hight,int wight)
+class MedicalAppointment
+{
+    string _petientName;
+    int _age;
+    public DateTime _date;
+
+    public MedicalAppointment(string petientName, int age, DateTime date)
     {
-        wight = wight;
-        hight = hight;
+        _petientName = petientName;
+        _age = age;
+        _date = date;
+    }
+    public void ResheduleDateTime(DateTime date)
+    {
+        _date = date;
     }
 
-    public void sum()
+    public void ResheduleDate(int month,int day)
     {
-        int sum = wight * hight;
-        Console.WriteLine(sum);
+        _date = new DateTime(_date.Year, month, day);
+    }
+
+    public void AddDateReshedule(int addMonth, int addDay)
+    {
+        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
     }
 }
