@@ -155,7 +155,7 @@
 //data hiding is making the members of the class non-public 
 
 
-//encaspulation 
+/////////////////////////////////////////////encaspulation 
 //caculator cal = new caculator();
 
 //Console.WriteLine("Enter number 1 :");
@@ -184,40 +184,92 @@
 //    }
 //}
 
-//Method overloding
+///////////////////////////////////////Method overloding
 
-MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha",25,DateTime.Today);
+//MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha");
 
-medi.ResheduleDate(07, 20);
-medi.AddDateReshedule(2, 5);
-Console.WriteLine(medi._date);
+//medi.ResheduleDate(07, 20);
+//medi.AddDateReshedule(2, 5);
+//Console.WriteLine(medi._date);
 
+//Console.ReadLine();
+
+//class MedicalAppointment
+//{
+//    string _petientName;
+//    int _age;
+//    public DateTime _date;
+
+//    public MedicalAppointment(string petientName, int age, DateTime date)
+//    {
+//        _petientName = petientName;
+//        _age = age;
+//        _date = date;
+//    }
+
+//    public MedicalAppointment(string petientName) : this(petientName,7)
+//    {
+
+//    }
+
+//    public MedicalAppointment(string petientName, int daysFromNow)
+//    {
+//        _petientName=petientName;
+//        _date = DateTime.Now.AddDays(daysFromNow);
+//    }
+
+//    public void ResheduleDateTime(DateTime date)
+//    {
+//        _date = date;
+//    }
+
+//    public void ResheduleDate(int month,int day)
+//    {
+//        _date = new DateTime(_date.Year, month, day);
+//    }
+
+//    public void AddDateReshedule(int addMonth, int addDay)
+//    {
+//        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
+//    }
+//}
+
+/////////////////////////////////////////////Using Expression boding methods 
+///
+
+HotelBooking hotel = new HotelBooking("Sudeera",0703625417, new DateTime(2024,05,07),new DateTime(2024,05,08),true,2800);
+
+
+Console.WriteLine("\t\t\t"+"recive date :" + hotel._recevationDate + "\n" + "\t\t\t" + "Leave Date :" + hotel._leavingDate + "\n" + "\t\t\t" + "Payoment : " + hotel._payoment + "\n" + "\t\t\t" + "Final Payoment :" + hotel.fianlPaymentGen());
 Console.ReadLine();
 
-class MedicalAppointment
+
+class HotelBooking
 {
-    string _petientName;
-    int _age;
-    public DateTime _date;
+    string _customerName;
+    int _phoneNumber;
+    public DateTime _recevationDate;
+    public DateTime _leavingDate;
+    public bool _payoment;
+    public double Payment;
+    public double Tax = 0.5;
 
-    public MedicalAppointment(string petientName, int age, DateTime date)
+
+    public HotelBooking(string customerName, int pNumber, DateTime reciveDate, DateTime leaveDate, bool payoment, double makePayoment)
     {
-        _petientName = petientName;
-        _age = age;
-        _date = date;
-    }
-    public void ResheduleDateTime(DateTime date)
-    {
-        _date = date;
+        _customerName = customerName;
+        _phoneNumber = pNumber;
+        _recevationDate = reciveDate;
+        _leavingDate = leaveDate;
+        _payoment = payoment;
+        Payment =makePayoment;
+        
     }
 
-    public void ResheduleDate(int month,int day)
+    public void PaymentGenerator(double makePayoment,double tax)
     {
-        _date = new DateTime(_date.Year, month, day);
+        
     }
 
-    public void AddDateReshedule(int addMonth, int addDay)
-    {
-        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
-    }
+    public double fianlPaymentGen() => (Payment * Tax)+Payment;
 }
