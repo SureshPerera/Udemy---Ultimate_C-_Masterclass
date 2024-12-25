@@ -186,59 +186,59 @@
 
 ///////////////////////////////////////Method overloding//////using optional parameeters
 
-MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha",2);
+//MedicalAppointment medi = new MedicalAppointment("sudeera Rajapaksha",2);
 
-var printMedi = new medicalAppoimentPrint();
+//var printMedi = new medicalAppoimentPrint();
 
-printMedi.print(medi);
+//printMedi.print(medi);
 
-Console.ReadLine();
+//Console.ReadLine();
 
 
-class medicalAppoimentPrint
-{
-    public void print(MedicalAppointment medicalA)
-    {
-        Console.WriteLine("Prind medical appoiment details" + "\n"+"Name : " + medicalA.GetPetionsName() + "\n" + "Recive date :" + medicalA.GetDate());
-    }
-}
-class MedicalAppointment
-{
-    string _petientName;
-    int _age;
-    DateTime _date;
+//class medicalAppoimentPrint
+//{
+//    public void print(MedicalAppointment medicalA)
+//    {
+//        Console.WriteLine("Prind medical appoiment details" + "\n"+"Name : " + medicalA.GetPetionsName() + "\n" + "Recive date :" + medicalA.GetDate());
+//    }
+//}
+//class MedicalAppointment
+//{
+//    string _petientName;
+//    int _age;
+//    DateTime _date;
 
-    public MedicalAppointment(string petientName, int age, DateTime date)
-    {
-        _petientName = petientName;
-        _age = age;
-        _date = date;
-    }
-    public DateTime GetDate()=> _date;
-    public string GetPetionsName ()=> _petientName.ToString();
-    public int GetAge() => _age;
+//    public MedicalAppointment(string petientName, int age, DateTime date)
+//    {
+//        _petientName = petientName;
+//        _age = age;
+//        _date = date;
+//    }
+//    public DateTime GetDate()=> _date;
+//    public string GetPetionsName ()=> _petientName.ToString();
+//    public int GetAge() => _age;
 
-    public MedicalAppointment(string petientName , int daysFromNow = 7)
-    {
-        _petientName = petientName;
-        _date = DateTime.Now.AddDays(daysFromNow);
-    }
+//    public MedicalAppointment(string petientName , int daysFromNow = 7)
+//    {
+//        _petientName = petientName;
+//        _date = DateTime.Now.AddDays(daysFromNow);
+//    }
 
-    public void ResheduleDateTime(DateTime date)
-    {
-        _date = date;
-    }
+//    public void ResheduleDateTime(DateTime date)
+//    {
+//        _date = date;
+//    }
 
-    public void ResheduleDate(int month, int day)
-    {
-        _date = new DateTime(_date.Year, month, day);
-    }
+//    public void ResheduleDate(int month, int day)
+//    {
+//        _date = new DateTime(_date.Year, month, day);
+//    }
 
-    public void AddDateReshedule(int addMonth, int addDay)
-    {
-        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
-    }
-}
+//    public void AddDateReshedule(int addMonth, int addDay)
+//    {
+//        _date = new DateTime(_date.Year, _date.Month + addMonth, _date.Day + addDay);
+//    }
+//}
 
 /////////////////////////////////////////////Using Expression boding methods 
 ///
@@ -294,3 +294,44 @@ class MedicalAppointment
 
 
 //}
+
+
+/////////////////////////////check validate in default 
+
+int hights ;
+rectangle reg = new rectangle(10,10);
+
+hights = reg.Hight = 20;
+
+
+Console.WriteLine(reg.Hight);
+Console.ReadLine();
+
+class rectangle
+{
+    int _hight;
+    int _wight;
+
+    public rectangle(int wight, int hight)
+    {
+        _hight = getLengthOrDefualt(hight, nameof(hight));
+        _wight = getLengthOrDefualt(wight, nameof(wight));
+    }
+   
+    public int Hight { get; set;}
+    public int Wight { get; private set;}
+
+
+    public int getLengthOrDefualt(int length, string name)
+    {
+        int defaultValue = 1;
+
+        if (length <= 0)
+        {
+            Console.WriteLine($"{name} should be positive number..");
+            return defaultValue;
+        }
+        return length;
+    }
+}
+
