@@ -340,33 +340,198 @@
 //}
 
 ////////////////////////////////////// use static class and methods 
-int a = Calculator.Min(10, 20);
-Calculator calculator = new Calculator();
-Regtangle reg = new Regtangle();
+//int a = Calculator.Min(10, 20);
+//Calculator calculator = new Calculator();
+//Regtangle reg = new Regtangle();
 
-int bss = Regtangle.number;
+//int bss = Regtangle.number;
+//var customerName = new List<string>
+//{
+//    "sudath",
+//    "Kamalajith",
+//    "silwa"
+//};
+//customerName.Capacity = 10;
+//customerName.Add("Asanka");
+//Console.WriteLine(customerName.Count);
 
-Console.WriteLine(bss);
+//Console.ReadLine();
+
+//class Regtangle
+//{
+//    public Regtangle()
+//    {
+
+//    }
+//    public const int number = 100;
+
+
+//}
+//class  Calculator
+//{
+//    static int abc;
+//    static public int sum(int a, int b) => a + b;  
+//    static public int Min(int a, int b) => a - b;  
+//    static public int Multi(int a, int b) => a * b;
+//    static public int Sub(int a, int b) => a / b;
+
+
+//}
+
+////////////////////////////////////////////read and write txt files 
+///
+//var names = new names();
+//var path = names.BuildFilePath(); // return to the booling value 
+//if (File.Exists(path))
+//{
+//    Console.WriteLine("Names File Already Exists... Loading name.... ");
+//    names.ReadFromTxtFiles();
+//}
+//else
+//{
+//    Console.WriteLine("Names File Does Not Already Exists... ");
+//    names.AddName("Kamal");
+//    names.AddName("Sudeera");
+//    names.WriteToTextfile();
+//}
+
+
+//Console.WriteLine();
+//Console.ReadLine();
+
+//class names
+//{
+
+//    public names()
+//    {
+
+//    }
+//    private List<string> _names = new List<string>();
+
+//    public List<string> getList() => _names;
+//    public void AddName(string name)
+//    {
+//        if (IsValidName(name))
+//        {
+//            _names.Add(name);
+//        }
+//    }
+//    private bool IsValidName(string name)
+//    {
+//        return name.Length >= 2 &&
+//            name.Length < 25 &&
+//            char.IsUpper(name[0]) &&
+//            name.All(char.IsLetter);
+//    }
+//    public void ReadFromTxtFiles()
+//    {
+//        var fileContent = File.ReadAllText(BuildFilePath());
+//        var nameFormFile = fileContent.Split(Environment.NewLine).ToList();
+//        foreach(var names in nameFormFile)
+//        {
+//            AddName(names);
+//            Console.WriteLine(names);
+//        }
+
+//    }
+//    public void WriteToTextfile()
+//    {
+//        File.WriteAllText(BuildFilePath(), Format());
+//    }
+
+//    public string BuildFilePath()
+//    {
+//        return "name.txt";
+//    }
+
+//    public string Format()
+//    {
+//        return string.Join(Environment.NewLine, _names);
+//    }
+//}
+using System.Threading.Channels;
+using System.Xml.Linq;
+
+/// <summary>
+/// 
+/// </summary>
+///
+var books = new book();
+Console.WriteLine("Enter File Name");
+var fileName = Console.ReadLine();
+Console.WriteLine("Enter File Extention");
+var fileExtention = Console.ReadLine();
+
+var filePath = books.BuildFilePath(fileName, fileExtention);
+
+if (File.Exists(filePath))
+{
+    Console.WriteLine("File is alredy created......Loading file...");
+    books.ReadFile(fileName, fileExtention);
+}
+else
+{
+    Console.WriteLine("File is not exsisting... Create new file ");
+    books.FileWrite(fileName, fileExtention);
+    Console.WriteLine("Create file loading.......");
+    books.ReadFile(fileName,fileExtention);
+}
+//books.showListItem();
+//books.ReadFile("new", "txt");
+
+//write file txt 
+
+
+Console.WriteLine();
 
 Console.ReadLine();
-
-class Regtangle
+class book
 {
-    public Regtangle()
+    public book()
     {
-
+        
     }
-    public const int number = 100;
+    private List<string> StudentName = new List<string>
+    {
+        "sumudu Galmal",
+        "rathnapala chandrasena",
+        "kamal addara arachchi"
+    };
 
+    public List<string> SNames { get; set; }
 
+    public  void showListItem()
+    {
+        foreach (var name in StudentName)
+        {
+            var a = name;
+            Console.WriteLine(a); 
+        }
+    }
+
+    public void FileWrite(string fileName, string extention)
+    {
+        File.WriteAllText(BuildFilePath(fileName,extention), format());
+    }
+    public void ReadFile(string fileName, string extention)
+    {
+        var content = File.ReadAllText(BuildFilePath(fileName, extention));
+        var nameFromFile = content.Split(Environment.NewLine).ToList();
+        foreach (var name in nameFromFile)
+        {
+            Console.WriteLine(name);
+        }
+    }
+
+    public string BuildFilePath(string fileName , string extention)
+    {
+        return $"C:/Users/Max/Downloads/{fileName}.{extention}";
+    }
+
+    public string format()
+    {
+        return string.Join(Environment.NewLine, StudentName) ;
+    }
 }
-class  Calculator
-{
-    static int abc;
-    static public int sum(int a, int b) => a + b;  
-    static public int Min(int a, int b) => a - b;  
-    static public int Multi(int a, int b) => a * b;
-    static public int Sub(int a, int b) => a / b;
 
-    
-}
+
