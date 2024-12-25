@@ -241,8 +241,9 @@
 //}
 
 /////////////////////////////////////////////Using Expression boding methods 
-///
-
+/// <summary>
+/// 
+/// </summary>
 //HotelBooking hotel = new HotelBooking("Sudeera",0703625417, new DateTime(),new DateTime(),true,2800);
 
 //HotelBookingPrint hotelBook = new HotelBookingPrint();
@@ -298,40 +299,74 @@
 
 /////////////////////////////check validate in default 
 
-int hights ;
-rectangle reg = new rectangle(10,10);
+//int hights ;
+//rectangle reg = new rectangle(10,20);
 
-hights = reg.Hight = 20;
+//hights = reg.Hight = 20;
 
 
-Console.WriteLine(reg.Hight);
+//Console.WriteLine(reg.Discription);
+//Console.ReadLine();
+
+//class rectangle
+//{
+//    int _hight;
+//    int _wight;
+
+
+//    public rectangle(int wight, int hight)
+//    {
+//        _hight = getLengthOrDefualt(hight, nameof(hight));
+//        _wight = getLengthOrDefualt(wight, nameof(wight));
+//    }
+
+//    public int Hight { get; set;}
+//    public int Wight { get; set;}
+
+
+//    public int getLengthOrDefualt(int length, string name)
+//    {
+//        int defaultValue = 1;
+
+//        if (length <= 0)
+//        {
+//            Console.WriteLine($"{name} should be positive number..");
+//            return defaultValue;
+//        }
+//        return length;
+//    }
+
+//    public string Discription => $"A regtangale with width {Wight} " + $"and hight {Hight} ";
+//}
+
+////////////////////////////////////// use static class and methods 
+int a = Calculator.Min(10, 20);
+Calculator calculator = new Calculator();
+Regtangle reg = new Regtangle();
+
+int bss = Regtangle.number;
+
+Console.WriteLine(bss);
+
 Console.ReadLine();
 
-class rectangle
+class Regtangle
 {
-    int _hight;
-    int _wight;
-
-    public rectangle(int wight, int hight)
+    public Regtangle()
     {
-        _hight = getLengthOrDefualt(hight, nameof(hight));
-        _wight = getLengthOrDefualt(wight, nameof(wight));
+
     }
-   
-    public int Hight { get; set;}
-    public int Wight { get; private set;}
+    public const int number = 100;
 
 
-    public int getLengthOrDefualt(int length, string name)
-    {
-        int defaultValue = 1;
-
-        if (length <= 0)
-        {
-            Console.WriteLine($"{name} should be positive number..");
-            return defaultValue;
-        }
-        return length;
-    }
 }
+class  Calculator
+{
+    static int abc;
+    static public int sum(int a, int b) => a + b;  
+    static public int Min(int a, int b) => a - b;  
+    static public int Multi(int a, int b) => a * b;
+    static public int Sub(int a, int b) => a / b;
 
+    
+}
