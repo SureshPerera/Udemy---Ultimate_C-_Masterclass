@@ -1,6 +1,4 @@
-﻿
-
-//using System.Threading.Channels;
+﻿//using System.Threading.Channels;
 
 //var rectangale = new Rectangale(50, 80);
 //var rectangale1 = new Rectangale(500, 80);
@@ -379,33 +377,16 @@
 //}
 
 ////////////////////////////////////////////read and write txt files 
-//using System.Xml.Linq;
-
-
-
-//NamesRepository namesRepository = new NamesRepository();
-//AddNameToList Add = new AddNameToList();
-
-
-
-//var names = new names();
-//var path = namesRepository.BuildFilePath(); // return to the booling value 
-//if (File.Exists(path))
-//{
-//    Console.WriteLine("Names File Already Exists... Loading name.... ");
-//    namesRepository.ReadFromTxtFiles();
-//}
-//else
-//{
-//    Console.WriteLine("Names File Does Not Already Exists... ");
-//    Add.AddName("Kamal");
-//    Add.AddName("Sudeera");
-//    namesRepository.WriteToTextfile();
-//}
-
-
-//Console.WriteLine();
-//Console.ReadLine();
+class IsValideName()
+{
+    public bool IsValidName(string name)
+    {
+        return name.Length >= 2 &&
+            name.Length < 25 &&
+            char.IsUpper(name[0]) &&
+            name.All(char.IsLetter);
+    }
+}
 //using System.Threading.Channels;
 //using System.Xml.Linq;
 
@@ -490,44 +471,5 @@
 //        return string.Join(Environment.NewLine, StudentName) ;
 //    }
 //}
-Pizza pizza = new Pizza();
-Ingrediant ingresiant = new Ingrediant();
-
-pizza.AddToIngrediance(new TomatoSauce());
-pizza.AddToIngrediance(new Cheddar());
-pizza.AddToIngrediance(new Mozzarella());
 
 
-Console.WriteLine(pizza.Discribe());
-
-Console.ReadLine();
-
-class Pizza
-{
-    public List<Ingrediant> _Ingrediant = new List<Ingrediant>();
-    public void AddToIngrediance(Ingrediant ingrediant) => _Ingrediant.Add(ingrediant);
-    public string Discribe() => $"this is pizza with {string.Join(",", _Ingrediant)}";
-}
-
-class Ingrediant
-{
-  
-}
-class TomatoSauce : Ingrediant
-{
-    public string name => "Tomato Sauce";
-    public int TomatosIn100g { get; }
-    
-}
-
-class Cheddar : Ingrediant
-{
-    public string name => "Cheddar";
-    public int AgedForMonth { get; }
-
-}
-class Mozzarella : Ingrediant
-{
-    public string name => "Mozzarella";
-    public bool IsLight { get; }
-}
