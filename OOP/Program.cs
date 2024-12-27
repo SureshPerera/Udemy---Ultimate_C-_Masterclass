@@ -241,9 +241,6 @@
 //}
 
 /////////////////////////////////////////////Using Expression boding methods 
-/// <summary>
-/// 
-/// </summary>
 //HotelBooking hotel = new HotelBooking("Sudeera",0703625417, new DateTime(),new DateTime(),true,2800);
 
 //HotelBookingPrint hotelBook = new HotelBookingPrint();
@@ -409,10 +406,6 @@
 //using System.Threading.Channels;
 //using System.Xml.Linq;
 
-/// <summary>
-/// 
-/// </summary>
-///
 //var books = new book();
 //Console.WriteLine("Enter File Name");
 //var fileName = Console.ReadLine();
@@ -490,44 +483,121 @@
 //        return string.Join(Environment.NewLine, StudentName) ;
 //    }
 //}
-Pizza pizza = new Pizza();
-Ingrediant ingresiant = new Ingrediant();
+//Pizza pizza = new Pizza();
+//Ingrediant ingresiant = new Ingrediant();
+//
+//pizza.AddToIngrediance(new TomatoSauce());
+//pizza.AddToIngrediance(new Cheddar());
+//pizza.AddToIngrediance(new Mozzarella());
 
-pizza.AddToIngrediance(new TomatoSauce());
-pizza.AddToIngrediance(new Cheddar());
-pizza.AddToIngrediance(new Mozzarella());
+
+//Console.WriteLine(pizza.Discribe());
+
+//var ingradiant = new Ingrediant();
+//Cheddar chedda = new Cheddar();
+//TomatoSauce tm = new TomatoSauce();
+//chedda.names = "this is chedda";
+//tm.names = "this is tomato";
 
 
-Console.WriteLine(pizza.Discribe());
+//Console.WriteLine(ingradiant.publicDetails());
+//Console.WriteLine(chedda.names);
+//Console.WriteLine(tm.names);
 
+
+//Console.ReadLine();
+
+//class Pizza
+//{
+//    public List<Ingrediant> _Ingrediant = new List<Ingrediant>();
+//    public void AddToIngrediance(Ingrediant ingrediant) => _Ingrediant.Add(ingrediant);
+//    public string Discribe() => $"this is pizza with {string.Join(",", _Ingrediant)}";
+
+
+//}
+
+//class Ingrediant
+//{
+//    public string names { get; }
+//    private string privateDetails () => "This is Private Details";
+
+//    public string publicDetails() => "This is Public Details";
+//    protected string protectedDetails() => "This is Protected Details";
+//}
+//class TomatoSauce : Ingrediant
+//{
+//    public string name => "Tomato Sauce";
+//    public int TomatosIn100g { get; }
+
+
+//    public void create()
+//    {
+
+//        publicDetails();
+//        protectedDetails();
+
+//    }
+//}
+
+//class Cheddar : Ingrediant
+//{
+
+//    public string name => "Cheddar";
+//    public int AgedForMonth { get; }
+
+//}
+//class Mozzarella : Ingrediant
+//{
+//    public string name => "Mozzarella";
+//    public bool IsLight { get; }
+//}
+
+using System.Diagnostics.CodeAnalysis;
+
+/// </summary>
+///
+bool IsNumsPositive = true;
+NumSumCalculator numSumCalculator = 
+    IsNumsPositive ?
+    new IsPositiveNumber(): 
+    new NumSumCalculator();
+
+var numbers  = new List<int>
+{
+    1,5,9,10,50,6,20,4,250,500,-540
+};
+
+int sum = numSumCalculator.SumNum(numbers);
+
+
+
+
+Console.WriteLine("Sum of All number = "+ sum);
+
+Console.WriteLine();
 Console.ReadLine();
 
-class Pizza
+class NumSumCalculator
 {
-    public List<Ingrediant> _Ingrediant = new List<Ingrediant>();
-    public void AddToIngrediance(Ingrediant ingrediant) => _Ingrediant.Add(ingrediant);
-    public string Discribe() => $"this is pizza with {string.Join(",", _Ingrediant)}";
+    public int SumNum(List<int> number)
+    {
+        int sum = 0;
+        foreach (int sums in number)
+        {
+            if (shallBeAdded(sums) )
+            {
+                sum += sums;
+
+            }
+        };
+        return sum;
+    }
+
+    public virtual bool shallBeAdded(int number) => true;
 }
 
-class Ingrediant
+class IsPositiveNumber : NumSumCalculator
 {
-  
-}
-class TomatoSauce : Ingrediant
-{
-    public string name => "Tomato Sauce";
-    public int TomatosIn100g { get; }
-    
-}
+    public override bool shallBeAdded(int number) => number > 0;
 
-class Cheddar : Ingrediant
-{
-    public string name => "Cheddar";
-    public int AgedForMonth { get; }
-
-}
-class Mozzarella : Ingrediant
-{
-    public string name => "Mozzarella";
-    public bool IsLight { get; }
 }
