@@ -628,8 +628,14 @@
 
 name name = new name();
 
+string names = "kamal";
+bool IsthisString = names is string;
+bool IsthisInt = names is int;
+bool IsthisnameString = name is object;
 
-Console.WriteLine(name);
+Console.WriteLine("names is string = " + IsthisString);
+Console.WriteLine("names is Int = "+ IsthisInt);
+Console.WriteLine("name is string = "+ IsthisnameString);
 
 Console.ReadLine();
 
