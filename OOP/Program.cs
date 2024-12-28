@@ -483,9 +483,11 @@
 //        return string.Join(Environment.NewLine, StudentName) ;
 //    }
 //}
+//////////////////////////////////inheritance
+
 //Pizza pizza = new Pizza();
-//Ingrediant ingresiant = new Ingrediant();
-//
+//Ingrediant ingresiant = new Ingrediant(5);
+//TomatoSauce tomatoSauce = new TomatoSauce(2,2);
 //pizza.AddToIngrediance(new TomatoSauce());
 //pizza.AddToIngrediance(new Cheddar());
 //pizza.AddToIngrediance(new Mozzarella());
@@ -493,11 +495,11 @@
 
 //Console.WriteLine(pizza.Discribe());
 
-//var ingradiant = new Ingrediant();
+
+
 //Cheddar chedda = new Cheddar();
 //TomatoSauce tm = new TomatoSauce();
-//chedda.names = "this is chedda";
-//tm.names = "this is tomato";
+
 
 
 //Console.WriteLine(ingradiant.publicDetails());
@@ -516,16 +518,28 @@
 
 //}
 
-//class Ingrediant
+//public class Ingrediant
 //{
+//    public Ingrediant(int numOfIndrediatn)
+//    {
+//        Console.WriteLine("This is ingrediant constracter");
+//        this.numOfIndrediatn = numOfIndrediatn;
+
+//    }
+//    public int numOfIndrediatn { get; set; }
 //    public string names { get; }
-//    private string privateDetails () => "This is Private Details";
+//    private string privateDetails() => "This is Private Details";
 
 //    public string publicDetails() => "This is Public Details";
 //    protected string protectedDetails() => "This is Protected Details";
 //}
 //class TomatoSauce : Ingrediant
 //{
+//    public TomatoSauce(int numOfIndrediatn, int TomatosIn100g):base(numOfIndrediatn)
+//    {
+//        Console.WriteLine("This is tomatoSaurce constractor");
+//        this.TomatosIn100g = TomatosIn100g;
+//    }
 //    public string name => "Tomato Sauce";
 //    public int TomatosIn100g { get; }
 
@@ -533,71 +547,97 @@
 //    public void create()
 //    {
 
-//        publicDetails();
-//        protectedDetails();
+//        //publicDetails();
+//       // protectedDetails();
 
 //    }
 //}
 
 //class Cheddar : Ingrediant
 //{
-
+//    public Cheddar(int numOfIndrediatn,int AgedForMonth ):base(numOfIndrediatn)
+//    {
+//        this.AgedForMonth = AgedForMonth;
+//    }
 //    public string name => "Cheddar";
 //    public int AgedForMonth { get; }
 
 //}
 //class Mozzarella : Ingrediant
 //{
+//    public Mozzarella(int numOfIndrediatn, bool IsLight) : base(numOfIndrediatn)
+//    {
+//        this.IsLight = IsLight;
+//    }
 //    public string name => "Mozzarella";
 //    public bool IsLight { get; }
 //}
 
-using System.Diagnostics.CodeAnalysis;
+
+
+/////////////////////////////////////////////////////////////////////////////
 
 /// </summary>
 ///
-bool IsNumsPositive = true;
-NumSumCalculator numSumCalculator = 
-    IsNumsPositive ?
-    new IsPositiveNumber(): 
-    new NumSumCalculator();
+//bool IsNumsPositive = true;
+//NumSumCalculator numSumCalculator = 
+//    IsNumsPositive ?
+//    new IsPositiveNumber(): 
+//    new NumSumCalculator();
+//
+//var numbers  = new List<int>
+//{
+//    1,5,9,10,50,6,20,4,250,500,-540
+//};
+//
+//int sum = numSumCalculator.SumNum(numbers);
+//
+//
+//
+//
+//Console.WriteLine("Sum of All number = "+ sum);
+//
+//Console.WriteLine();
+//Console.ReadLine();
+//
+//class NumSumCalculator
+//{
+//    public int SumNum(List<int> number)
+//    {
+//        int sum = 0;
+//        foreach (int sums in number)
+//        {
+//            if (shallBeAdded(sums) )
+//            {
+//                sum += sums;
+//
+//            }
+//        };
+//        return sum;
+//    }
+//
+//    public virtual bool shallBeAdded(int number) => true;
+//}
+//
+//class IsPositiveNumber : NumSumCalculator
+//{
+//    public override bool shallBeAdded(int number) => number > 0;
+//
+//}
+//////////////////////////////////////////////////////
 
-var numbers  = new List<int>
-{
-    1,5,9,10,50,6,20,4,250,500,-540
-};
-
-int sum = numSumCalculator.SumNum(numbers);
+name name = new name();
 
 
+Console.WriteLine(name);
 
-
-Console.WriteLine("Sum of All number = "+ sum);
-
-Console.WriteLine();
 Console.ReadLine();
 
-class NumSumCalculator
+public enum name
 {
-    public int SumNum(List<int> number)
-    {
-        int sum = 0;
-        foreach (int sums in number)
-        {
-            if (shallBeAdded(sums) )
-            {
-                sum += sums;
+    suranga,
+    ranathunga,
+    chamari,
 
-            }
-        };
-        return sum;
-    }
-
-    public virtual bool shallBeAdded(int number) => true;
-}
-
-class IsPositiveNumber : NumSumCalculator
-{
-    public override bool shallBeAdded(int number) => number > 0;
-
+    
 }
