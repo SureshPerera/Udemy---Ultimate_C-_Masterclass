@@ -626,16 +626,12 @@
 //}
 //////////////////////////////////////////////////////
 
-name name = new name();
 
-string names = "kamal";
-bool IsthisString = names is string;
-bool IsthisInt = names is int;
-bool IsthisnameString = name is object;
 
-Console.WriteLine("names is string = " + IsthisString);
-Console.WriteLine("names is Int = "+ IsthisInt);
-Console.WriteLine("name is string = "+ IsthisnameString);
+
+var wepon = new Wepon();
+
+
 
 Console.ReadLine();
 
@@ -646,4 +642,28 @@ public enum name
     chamari,
 
     
+}
+
+public  class Wepon
+{
+    public static string name;
+    public static string WeponName { get; set; }
+    public static int NoOfWepont { get; set; }
+
+    public static string names() => name;
+}
+
+public class Ak47 : Wepon
+{
+
+}
+
+public  sealed class Granate
+{
+
+}
+
+public  class Bomb 
+{
+
 }
