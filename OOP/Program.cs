@@ -577,8 +577,6 @@
 
 /////////////////////////////////////////////////////////////////////////////
 
-/// </summary>
-///
 //bool IsNumsPositive = true;
 //NumSumCalculator numSumCalculator = 
 //    IsNumsPositive ?
@@ -629,9 +627,43 @@
 
 
 
-var wepon = new Wepon();
+using System.Text.Json;
+
+/// </summary>
+///
+
+var stringss = "aaaaa" +
+    "aaaaaaa" +
+    "aaaaaa";
+var multiLineString = @"Welidalla,
+Nikadalupotha.";
 
 
+var list = new List<string>
+{
+    "Sugath",
+    "prasanga",
+    "kamal"
+};
+var wepon = new Wepon
+{
+    WeponName = "Ak47",
+    NoOfWepont = 40,
+};
+
+var wepon2 = new Wepon
+{
+    WeponName = "M16",
+    NoOfWepont = 50,
+};
+var listserialize = " {\"name\":null,\"WeponName\":\"Ak47\",\"NoOfWepont\":40}";
+
+var nameFromJson = JsonSerializer.Serialize(wepon);
+
+var DeserializeFromJson = JsonSerializer.Deserialize<Wepon>(listserialize);
+
+Console.WriteLine("asJson = "+ nameFromJson);
+Console.WriteLine("asNomal = "+ DeserializeFromJson);
 
 Console.ReadLine();
 
@@ -639,26 +671,26 @@ public enum name
 {
     suranga,
     ranathunga,
-    chamari,
-
-    
+    chamari,   
 }
 
-public  class Wepon
+public  class Wepon 
 {
-    public static string name;
-    public static string WeponName { get; set; }
-    public static int NoOfWepont { get; set; }
-
-    public static string names() => name;
+    public  string name { get; set; }
+    public  string WeponName { get; set; }
+    public  int NoOfWepont { get; set; }
 }
 
-public class Ak47 : Wepon
+public interface Iflying
 {
-
+    void fly();
+}
+public class Ak47 : Iflying
+{
+    public void fly() => Console.WriteLine("fly to the sky");
 }
 
-public  sealed class Granate
+public class Granate 
 {
 
 }
