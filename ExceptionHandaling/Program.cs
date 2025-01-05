@@ -1,6 +1,49 @@
 ﻿// See https://aka.ms/new-console-template for more information
+Run run = new Run();
+ConsoleResponsivenes Print = new ConsoleResponsivenes();
+try
+{
 
-new Run().main();
+new Person("", 10);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+Print.Exit();
+
+
+public class Person
+{
+    public string Name { get; } 
+    public int YearOfBirth { get; }
+
+    public Person(string name,  int yearOfBirth)
+    {
+        if(name == string.Empty)
+        {
+            throw new Exception("Invalide name.");
+
+        }
+        else
+        {
+            Console.WriteLine("Added");
+            Name = name;
+
+        }
+        if(yearOfBirth > 0)
+        {
+
+            Console.WriteLine("Added");
+        YearOfBirth = yearOfBirth;
+
+        }
+        else
+        {
+            throw new Exception("Year should be positive.");
+        }
+    }
+}
 
 public class Run
 {
@@ -27,6 +70,16 @@ public class Run
         }
 
         Print.Exit();
+    }
+    public int GetFirstElement(IEnumerable<int> numbers)
+    {
+        foreach(var number in numbers)
+        {
+            return number;
+        }
+        
+        throw new Exception("This collection can't be empty");
+
     }
 
     
