@@ -4,15 +4,28 @@ ConsoleResponsivenes Print = new ConsoleResponsivenes();
 try
 {
 
-new Person("", 10);
+    RecursiveMethord(1,100);
 }
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
+
+
 Print.Exit();
 
 
+void RecursiveMethord(int number, int range)
+{
+    
+    Print.Message($"I like to be a software Engenioure {number}");
+    if (number < range)
+    {
+        RecursiveMethord(number + 1 , range);
+        var newList = new List<int>();
+     
+    }
+}
 public class Person
 {
     public string Name { get; } 
@@ -20,6 +33,10 @@ public class Person
 
     public Person(string name,  int yearOfBirth)
     {
+        if(name is null)
+        {
+            throw new ArgumentException("This variable is null");
+        }
         if(name == string.Empty)
         {
             throw new Exception("Invalide name.");
@@ -88,7 +105,10 @@ public class ConsoleResponsivenes
 {
     public void Message(string message)
     {
-        Console.WriteLine(message);
+        string messages = message;
+        Console.WriteLine(messages);
+
+       // throw new StackOverflowException("This can't be run becouse of catch stack over flows");
     }
     public void Exit()
     {
