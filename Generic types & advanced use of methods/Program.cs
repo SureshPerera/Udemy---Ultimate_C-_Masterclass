@@ -129,13 +129,17 @@ var numbers = new List<int>
 
 try
 {
-    TwoInput twoInput = GetMinAndMax(numbers);
+    var intTuppel = new Tuple<int, int,int>(10,30,40);
+   
 
-    Console.WriteLine($"Mininum Value is :{twoInput._int1}");
-    Console.WriteLine($"Maxnum Value is :{twoInput._int2}");
+    //TwoInput<int,int> twoInput = GetMinAndMax(numbers);
+
+    //Console.WriteLine($"Mininum Value is :{twoInput.Item1}");
+    //Console.WriteLine($"Maxnum Value is :{twoInput.Item2}");
+
+  
 
 
-    
 }
 catch (InvalidDataException ex)
 {
@@ -143,43 +147,43 @@ catch (InvalidDataException ex)
 }
 
 Console.ReadLine();
-TwoInput GetMinAndMax(IEnumerable<int> input)
-{
-    if (!input.Any())
-    {
-        throw new InvalidDataException(
-            $"The Input collection can't be empty");
+//TwoInput<int,int> GetMinAndMax(IEnumerable<int> input)
+//{
+//    if (!input.Any())
+//    {
+//        throw new InvalidDataException(
+//            $"The Input collection can't be empty");
 
-    }
-    int Min = input.First();
-    int Max = input.First();
+//    }
+//    int Min = input.First();
+//    int Max = input.First();
 
-    foreach (var item in input)
-    {
-        if(item > Max)
-        {
-            Max = item;
-        }
-        if(item < Min)
-        {
-            Min = item;
-        }
-    }
-    return new TwoInput(Min, Max);
+//    foreach (var item in input)
+//    {
+//        if(item > Max)
+//        {
+//            Max = item;
+//        }
+//        if(item < Min)
+//        {
+//            Min = item;
+//        }
+//    }
+//    return new TwoInput<int,int>(Min, Max);
     
-}
+//}
 
 
 
-public class TwoInput
-{
+//public class TwoInput <T1,T2>
+//{
   
-    public TwoInput(int Int1,  int Int2)
-    {
-        _int1 = Int1;
-        _int2 = Int2;
-    }
-      public int _int1 { get; }
-    public int _int2 { get; }
+//    public TwoInput(T1 item1, T2 item2)
+//    {
+//        Item1 = item1;
+//        Item2 = item2;
+//    }
+//      public T1 Item1 { get; }
+//    public T2 Item2 { get; }
 
-}
+//}
