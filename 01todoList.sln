@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "simpleCalculator", "simpleC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{5A12AF16-53EC-4A35-A29A-9ECFD0B2689A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandaling", "ExceptionHandaling\ExceptionHandaling.csproj", "{146115CC-27AC-4A56-A48A-29827CB195E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandaling", "ExceptionHandaling\ExceptionHandaling.csproj", "{146115CC-27AC-4A56-A48A-29827CB195E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generic types & advanced use of methods", "Generic types & advanced use of methods\Generic types & advanced use of methods.csproj", "{01B127D3-D32E-47D7-951D-BB132E9A9D6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{146115CC-27AC-4A56-A48A-29827CB195E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{146115CC-27AC-4A56-A48A-29827CB195E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{146115CC-27AC-4A56-A48A-29827CB195E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B127D3-D32E-47D7-951D-BB132E9A9D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B127D3-D32E-47D7-951D-BB132E9A9D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B127D3-D32E-47D7-951D-BB132E9A9D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B127D3-D32E-47D7-951D-BB132E9A9D6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

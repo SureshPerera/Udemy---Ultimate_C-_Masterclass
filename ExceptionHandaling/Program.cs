@@ -119,31 +119,57 @@
 
 
 
+//try
+//{
+
+//    var dataFromWeb = SendHttpRequest(403);
+//}catch (HttpRequestException ex) when (ex.Message == "403")
+//{
+//    Console.WriteLine("It has forbitten to access the resource");
+//    throw;
+//} catch(HttpRequestException ex) when (ex.Message == "200")
+//{
+//    Console.WriteLine("It has succuss to access the resource");
+//throw;
+//}catch(HttpRequestException ex) when (ex.Message == "4")
+//{
+//    Console.WriteLine("It has user error to access resource");
+//throw;
+//}
+
+//Console.ReadLine();
+
+
+//int SendHttpRequest(int www)
+//{
+//    int wwws = www;
+
+//    return wwws;
+//}
+
+
 try
 {
-    
-    var dataFromWeb = SendHttpRequest(403);
-}catch (HttpRequestException ex) when (ex.Message == "403")
+    Run();
+}catch(NullReferenceException ex)
 {
-    Console.WriteLine("It has forbitten to access the resource");
-    throw;
-} catch(HttpRequestException ex) when (ex.Message == "200")
-{
-    Console.WriteLine("It has succuss to access the resource");
-throw;
-}catch(HttpRequestException ex) when (ex.Message == "4")
-{
-    Console.WriteLine("It has user error to access resource");
-throw;
+    Console.WriteLine("there have some error" +ex.Message);
 }
 
 Console.ReadLine();
 
-
-int SendHttpRequest(int www)
+void Run()
 {
-    int wwws = www;
-    
-    return wwws;
-}
+    try
+    {
 
+    Console.WriteLine("Enter Word.");
+    var Word = Console.ReadLine();
+    Console.WriteLine("...........................");
+    Console.WriteLine($"Count of Word charecters is :{Word.Length} ");
+    }catch(NullReferenceException ex)
+    {
+        Console.WriteLine("Null reference Exceptions is : " + ex.Message);
+        throw;
+    }
+}
