@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System.Diagnostics;
+using System.Dynamic;
 
 Console.WriteLine("Generic Types...............\n\n");
 //var list = new ListOfItem();
@@ -190,24 +191,85 @@ Console.WriteLine("Generic Types...............\n\n");
 
 
 //Generic methods.............................................
+//Stopwatch stopwatch  = Stopwatch.StartNew();
 
-var number = new List<int> { 1, 5, 6, 8 };
-
-number.AddToFront<int>(10);
+//var number = new List<decimal> { 1.5m, 5.7m, 6, -8, };
 
 
-foreach (var item in number)
+//var ints = number.ConvertTo<decimal,int>();
+
+//foreach (var item in ints)
+//{
+
+//Console.WriteLine(item);
+//}
+//stopwatch.Stop();
+
+//Console.WriteLine($"Execution took {stopwatch.ElapsedMilliseconds}ms.");
+
+//Console.ReadLine();
+
+//static class ListExtentions
+//{
+//    public static List<TTarget> ConvertTo<TSource, TTarget>(this List<TSource> type)
+//    {
+//        var result = new List<TTarget>();
+//        foreach (var item in type)
+//        {
+//            TTarget itemAfterCasting = (TTarget)Convert.ChangeType(item, typeof(TTarget));
+//            result.Add(itemAfterCasting);
+//        }
+//        return result;
+//    }
+//    public static void AddToFront<T>(this List<T> list, T item)
+//    {
+//        list.Insert(0, item);
+//    }
+//}
+
+var list = new List<int>
 {
-    
-Console.WriteLine(item);
+    1,5,6,2,3,8,4,6,9,7,6,54,58
+};
+
+list.Sort();
+
+var personDetaiils = new List<person>
+{
+    new person{Name = " John" , YearOfBirthday = 1980},
+    new person{Name = " Saman" , YearOfBirthday = 2000},
+    new person{Name = " Kalpith" , YearOfBirthday = 1970},
+    new person{Name = " Padmanadan" , YearOfBirthday = 1450},
+    new person{Name = " Ranathunga  " , YearOfBirthday = 2012}
+
+};
+
+personDetaiils.Sort();
+
+foreach (var item in personDetaiils)
+{
+    Console.WriteLine($"Name : {item.Name} " +
+        $"Year Of Birth : {item.YearOfBirthday}");
+
 }
 
 Console.ReadLine();
 
-static class ListExtentions
+public class person : IComparable<person>
 {
-    public static void AddToFront<T>(this List<T> list, T item)
+    public string Name { get; set; }
+    public int YearOfBirthday { get; set; }
+
+    public int CompareTo(person other)
     {
-        list.Insert(0, item);
+       if(YearOfBirthday < other.YearOfBirthday)
+        {
+            return +1;
+        }else if(YearOfBirthday > other.YearOfBirthday)
+        {
+            return -1;
+        }
+        return 0;
+        
     }
 }
