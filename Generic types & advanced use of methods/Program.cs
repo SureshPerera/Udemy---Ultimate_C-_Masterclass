@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Dynamic;
+using System.Numerics;
 
 Console.WriteLine("Generic Types...............\n\n");
 //var list = new ListOfItem();
@@ -227,49 +228,171 @@ Console.WriteLine("Generic Types...............\n\n");
 //    }
 //}
 
+//var list = new List<int>
+//{
+//    10,5,50,6
+//};
+
+//list.Sort();
+
+//foreach (var item in list)
+//{
+//    Console.WriteLine(item);
+//}
+//var personDetaiils = new List<person>
+//{
+//    new person{Name = " John" , YearOfBirthday = 1980},
+//    new person{Name = " Saman" , YearOfBirthday = 2000},
+//    new person{Name = " Kalpith" , YearOfBirthday = 1970},
+//    new person{Name = " Padmanadan" , YearOfBirthday = 1450},
+//    new person{Name = " Ranathunga  " , YearOfBirthday = 2012}
+
+//};
+
+//personDetaiils.Sort();
+
+////foreach (var item in personDetaiils)
+////{
+////    Console.WriteLine($"Name : {item.Name} " +
+////        $"Year Of Birth : {item.YearOfBirthday}");
+
+////}
+
+//Console.ReadLine();
+
+//public class person : IComparable<person>
+//{
+//    public string Name { get; set; }
+//    public int YearOfBirthday { get; set; }
+
+//    public int CompareTo(person other)
+//    {
+//       if(YearOfBirthday < other.YearOfBirthday)
+//        {
+//            return +1;
+//        }else if(YearOfBirthday > other.YearOfBirthday)
+//        {
+//            return -1;
+//        }
+//        return 0;
+
+//    }
+//}
+
+// numaric type generic math
+
+//Console.WriteLine("Calculator Square Any Format\n\n");
+//Console.WriteLine(Calculator.Square(50));
+//Console.WriteLine(Calculator.Square(50d));
+//Console.WriteLine(Calculator.Square(50.5));
+//Console.WriteLine("\n");
+//Console.WriteLine("Calculate Any Summing numbers");
+//Console.WriteLine(Calculator.Summing(50, 80));
+//Console.WriteLine(Calculator.Summing(50d, 80.80));
+//Console.WriteLine("\n");
+//Console.WriteLine("Calculate Any Multiply numbers");
+//Console.WriteLine(Calculator.Multiply(50,80));
+//Console.WriteLine(Calculator.Multiply(40d,80.50));
+//Console.WriteLine(Calculator.Multiply(-50,80));
+
+//Console.ReadLine();
+
+//public static class Calculator 
+//{
+//    public static T  Square<T>(T input) where T : INumber<T>
+//        => input * input;
+//    public static T Summing<T>(T input,T input2) where T : INumber<T>
+//        => input + input2;
+//    public static T Multiply<T>(T input, T input2) where T : INumber<T>
+//        => input * input2;
+//}
+
+//Type constrain
+
+//Console.ReadLine();
+
+//void SomeMethod<TPet, TOwner>(TPet pet,  TOwner Owner) 
+//    where TPet : pet, IComparable<TPet>
+//    where TOwner : new()
+//{
+
+//}
+//public class pet { }
+
+//public class petOwner { }
+
+// Funs and Actions //////////////////////////////////////////////////////////////////
+
+int a = 5;
+var john = new Person("jone", "smith", new DateTime(2000,03,12));
 var list = new List<int>
 {
-    1,5,6,2,3,8,4,6,9,7,6,54,58
-};
-
-list.Sort();
-
-var personDetaiils = new List<person>
-{
-    new person{Name = " John" , YearOfBirthday = 1980},
-    new person{Name = " Saman" , YearOfBirthday = 2000},
-    new person{Name = " Kalpith" , YearOfBirthday = 1970},
-    new person{Name = " Padmanadan" , YearOfBirthday = 1450},
-    new person{Name = " Ranathunga  " , YearOfBirthday = 2012}
+    19
 
 };
 
-personDetaiils.Sort();
+Func<int,bool> newFuncs = IsLargerThan;
+Func<int, bool> newOddNum = IsOddNum;
 
-foreach (var item in personDetaiils)
+bool IsOddNum(int arg)
 {
-    Console.WriteLine($"Name : {item.Name} " +
-        $"Year Of Birth : {item.YearOfBirthday}");
-
+    if(arg % 2 == 0)
+    {
+        return true;
+    }
+    return false;
 }
+
+Console.WriteLine($"Is largerthen 10 : {IsAny(list, newFuncs)}");
+
+Console.WriteLine($"Is Odd Number : {IsAny(list, newOddNum)}");
+Action<string, string, bool> someAcrions;
+
+
+
 
 Console.ReadLine();
 
-public class person : IComparable<person>
+bool IsAny(IEnumerable<int> list,
+    Func<int,bool> newFunc)
 {
-    public string Name { get; set; }
-    public int YearOfBirthday { get; set; }
-
-    public int CompareTo(person other)
+    foreach (var item in list)
     {
-       if(YearOfBirthday < other.YearOfBirthday)
+        if(item > 10)
         {
-            return +1;
-        }else if(YearOfBirthday > other.YearOfBirthday)
-        {
-            return -1;
+            return true;
         }
-        return 0;
-        
+    }
+    return false;
+}
+bool IsLargerThan(int number)
+{
+    if(number > 10)
+    {
+        return true;
+    }
+    return false;
+}
+public class CalculatTheAge
+{
+    public DateTime AgeCalculate()
+    {
+        var TodayDate = DateTime.Now;
+        return TodayDate;
     }
 }
+public class Person
+{
+    public string _firstName { get; set; }
+    public string _lastName;
+    public DateTime _birthYear;
+
+    public Person(string v1, string v2, DateTime v3)
+    {
+        this._firstName = v1;
+        this._lastName = v2;
+        this._birthYear = v3;
+    }
+}
+
+
