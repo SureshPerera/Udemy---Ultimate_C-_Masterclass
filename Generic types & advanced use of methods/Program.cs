@@ -421,59 +421,158 @@ Console.WriteLine("Generic Types...............\n\n");
 
 //delegate void PrintResult(string input);
 //delegate string ProcessString(string input);
+//////////////////////////////////////////////////////////////////////////
+//var employee = new List<Employee>
+//{
+//    new Employee("suresh","Accounting",28460),
+//    new Employee("gamlath","HR",25460),
+//    new Employee("pradeep","Accounting",29460),
+//    new Employee("kumara","Accounting",21460),
+//    new Employee("rasanga","HR",32460),
+//    new Employee("padmakumara","Purchasing",24460)
+//};
 
-var employee = new List<Employee>
+//var result = CalculateAvarageSalary(employee);
+
+//foreach (var item in result)
+//{
+//    Console.WriteLine(item);
+//}
+//Dictionary<string, decimal> CalculateAvarageSalary(
+//    IEnumerable<Employee> employee)
+//{
+//    var emloyersParDepartment = new Dictionary<string, List<Employee>>();
+//    foreach (var item in employee)
+//    {
+//        if(!emloyersParDepartment.ContainsKey(item.Department))
+//        {
+//            emloyersParDepartment[item.Department] = new List<Employee>();
+
+//        }
+//        emloyersParDepartment[item.Department].Add(item);
+//    }
+//    var result = new Dictionary<string, decimal>();
+//    foreach (var item in emloyersParDepartment)
+//    {
+//        decimal sumOfSalary = 0;
+//        foreach (var item1 in item.Value)
+//        {
+//            sumOfSalary += item1.MonthSalary;
+//        }
+//        var avarage = sumOfSalary / item.Value.Count;
+//        result[item.Key] = avarage; 
+//    }
+//    return result;
+//}
+
+//Console.ReadLine();
+
+
+//public class Employee
+//{
+//    public Employee(string name, string department, decimal monthSalary)
+//    {
+//        Name = name;
+//        Department = department;
+//        MonthSalary = monthSalary;
+//    }
+
+//    public string Name { get; init; }
+//    public string Department { get; init; }
+//    public decimal MonthSalary { get; init;}
+//}
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+var numbers = new List<int>
 {
-    new Employee("suresh","Accounting",28460),
-    new Employee("gamlath","HR",25460),
-    new Employee("pradeep","Accounting",29460),
-    new Employee("kumara","Accounting",21460),
-    new Employee("rasanga","HR",32460),
-    new Employee("padmakumara","Purchasing",24460)
+    100,-50,60,80,-10,7,5,4,2
 };
 
-var result = CalculateAvarageSalary(employee);
+new Print(numbers);
 
-Dictionary<string, decimal> CalculateAvarageSalary(
-    IEnumerable<Employee> employee)
-{
-    var emloyersParDepartment = new Dictionary<string, List<Employee>>();
-    foreach (var item in employee)
-    {
-        if(!emloyersParDepartment.ContainsKey(item.Department))
-        {
-            emloyersParDepartment[item.Department] = new List<Employee>();
+Console.WriteLine(@"
+Select Filtering Methord
 
-        }
-        emloyersParDepartment[item.Department].Add(item);
-    }
-    var Result = new Dictionary<string, decimal>();
-    foreach (var item in emloyersParDepartment)
-    {
-        decimal sumOfSalary = 0;
-        foreach (var item1 in item.Value)
-        {
-            sumOfSalary += item1.MonthSalary;
-        }
-        var avarage = sumOfSalary / item.Value.Count;
-        result[item.Key] = avarage; 
-    }
-    return result;
-}
+Odd
+Positive
+Even");
+var UserInput = Console.ReadLine();
+var Result = new List<int>();
 
+ 
+NumberFilter filter = new NumberFilter();
+
+filter.FilterBy(UserInput,numbers);
+new Print(Result);
 Console.ReadLine();
 
-
-public class Employee
+public class NumberFilter
 {
-    public Employee(string name, string department, decimal monthSalary)
+    public List<int> FilterBy(string FilteringType,IEnumerable<int> numbers)
     {
-        Name = name;
-        Department = department;
-        MonthSalary = monthSalary;
-    }
 
-    public string Name { get; init; }
-    public string Department { get; init; }
-    public decimal MonthSalary { get; init;}
+        switch (FilteringType)
+        {
+            case "Odd":
+               return SelectOdd(numbers);
+               
+            case "Positive":
+                return SelectPositive(numbers);
+                
+            case "Even":
+                return SelectEven(numbers);
+                
+        }
+
+        List<int> SelectOdd(IEnumerable<int> numbers)
+        {
+            var OddResult = new List<int>();
+            foreach (var item in numbers)
+            {
+                if (item % 2 == 1)
+                {
+                    OddResult.Add(item);
+                }
+
+            }
+            return OddResult;
+        }
+
+        List<int> SelectPositive(IEnumerable<int> numbers)
+        {
+            var positiveResult = new List<int>();
+            foreach (var item in numbers)
+            {
+                if (item > 0)
+                {
+                    positiveResult.Add(item);
+                }
+
+            }
+            return positiveResult;
+        }
+        List<int> SelectEven(IEnumerable<int> numbers)
+        {
+            var EvenResult = new List<int>();
+            foreach (var item in numbers)
+            {
+                if (item % 2 == 0)
+                {
+                    EvenResult.Add(item);
+                }
+
+            }
+            return EvenResult;
+        }
+        return null;
+    }
+}
+public class Print
+{
+    public Print(IEnumerable<int> numbers)
+    {
+        var result = string.Join(",", numbers);
+        Console.WriteLine(result);
+    }
 }
