@@ -323,76 +323,157 @@ Console.WriteLine("Generic Types...............\n\n");
 
 // Funs and Actions //////////////////////////////////////////////////////////////////
 
-int a = 5;
-var john = new Person("jone", "smith", new DateTime(2000,03,12));
-var list = new List<int>
-{
-    19
+//int a = 5;
+//var john = new Person("jone", "smith", new DateTime(2000, 03, 12));
+//var list = new List<int>
+//{
+//    19
+//};
 
+//Func<int, bool> newFuncs = IsLargerThan;
+//Func<int, bool> newOddNum = IsOddNum;
+
+//bool IsOddNum(int arg)
+//{
+//if (arg % 2 == 0)
+//{
+//return true;
+//}
+//return false;
+//}
+
+//Console.WriteLine($"Is largerthen 10 : {IsAny(list, newFuncs)}");
+
+//Console.WriteLine($"Is Odd Number : {IsAny(list, newOddNum)}");
+//Action<string, string, bool> someAcrions;
+
+
+
+
+//Console.ReadLine();
+
+//bool IsAny(IEnumerable<int> list,
+//    Func<int, bool> newFunc)
+//{
+//foreach (var item in list)
+//{
+//if (item > 10)
+//{
+//return true;
+//}
+//}
+//return false;
+//}
+//bool IsLargerThan(int number)
+//{
+//if (number > 10)
+//{
+//return true;
+//}
+//return false;
+//}
+//public class CalculatTheAge
+//{
+//    public DateTime AgeCalculate()
+//    {
+//        var TodayDate = DateTime.Now;
+//        return TodayDate;
+//    }
+//}
+//public class Person
+//{
+//    public string _firstName { get; set; }
+//    public string _lastName;
+//    public DateTime _birthYear;
+
+//    public Person(string v1, string v2, DateTime v3)
+//    {
+//        this._firstName = v1;
+//        this._lastName = v2;
+//        this._birthYear = v3;
+//    }
+//}
+
+
+//Delagate /////////////////////////////////////////////////////////////
+
+//List<string> Name = new List<string>
+//{
+//    "suresnga",
+//    "padmakumara",
+//    "pradeepa",
+//    "latha"
+//};
+
+//PrintResult print1 = text => Console.WriteLine(text.ToLower());
+//PrintResult print2 = text => Console.WriteLine(text.ToUpper());
+//PrintResult print3 = text => Console.WriteLine(text.Trim());
+//PrintResult print4 = text => Console.WriteLine(text.Substring(0, 5));
+
+//PrintResult final =  print2 ;
+//final += print4;
+
+//Func<string,string,int> sumLenth = (txt1,txt2) => txt1.Length + txt2.Length;
+
+
+
+//Console.ReadLine();
+
+//delegate void PrintResult(string input);
+//delegate string ProcessString(string input);
+
+var employee = new List<Employee>
+{
+    new Employee("suresh","Accounting",28460),
+    new Employee("gamlath","HR",25460),
+    new Employee("pradeep","Accounting",29460),
+    new Employee("kumara","Accounting",21460),
+    new Employee("rasanga","HR",32460),
+    new Employee("padmakumara","Purchasing",24460)
 };
 
-Func<int,bool> newFuncs = IsLargerThan;
-Func<int, bool> newOddNum = IsOddNum;
+var result = CalculateAvarageSalary(employee);
 
-bool IsOddNum(int arg)
+Dictionary<string, decimal> CalculateAvarageSalary(
+    IEnumerable<Employee> employee)
 {
-    if(arg % 2 == 0)
+    var emloyersParDepartment = new Dictionary<string, List<Employee>>();
+    foreach (var item in employee)
     {
-        return true;
+        if(!emloyersParDepartment.ContainsKey(item.Department))
+        {
+            emloyersParDepartment[item.Department] = new List<Employee>();
+
+        }
+        emloyersParDepartment[item.Department].Add(item);
     }
-    return false;
+    var Result = new Dictionary<string, decimal>();
+    foreach (var item in emloyersParDepartment)
+    {
+        decimal sumOfSalary = 0;
+        foreach (var item1 in item.Value)
+        {
+            sumOfSalary += item1.MonthSalary;
+        }
+        var avarage = sumOfSalary / item.Value.Count;
+        result[item.Key] = avarage; 
+    }
+    return result;
 }
-
-Console.WriteLine($"Is largerthen 10 : {IsAny(list, newFuncs)}");
-
-Console.WriteLine($"Is Odd Number : {IsAny(list, newOddNum)}");
-Action<string, string, bool> someAcrions;
-
-
-
 
 Console.ReadLine();
 
-bool IsAny(IEnumerable<int> list,
-    Func<int,bool> newFunc)
-{
-    foreach (var item in list)
-    {
-        if(item > 10)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-bool IsLargerThan(int number)
-{
-    if(number > 10)
-    {
-        return true;
-    }
-    return false;
-}
-public class CalculatTheAge
-{
-    public DateTime AgeCalculate()
-    {
-        var TodayDate = DateTime.Now;
-        return TodayDate;
-    }
-}
-public class Person
-{
-    public string _firstName { get; set; }
-    public string _lastName;
-    public DateTime _birthYear;
 
-    public Person(string v1, string v2, DateTime v3)
+public class Employee
+{
+    public Employee(string name, string department, decimal monthSalary)
     {
-        this._firstName = v1;
-        this._lastName = v2;
-        this._birthYear = v3;
+        Name = name;
+        Department = department;
+        MonthSalary = monthSalary;
     }
+
+    public string Name { get; init; }
+    public string Department { get; init; }
+    public decimal MonthSalary { get; init;}
 }
-
-
