@@ -483,96 +483,105 @@ Console.WriteLine("Generic Types...............\n\n");
 //}
 
 /////////////////////////////////////////////////////////////////////////////////////
+//try
+//{
+//    var numbers = new List<int>
+//{
+//    100,-50,60,80,-10,7,5,4,2
+//};
 
-var numbers = new List<int>
-{
-    100,-50,60,80,-10,7,5,4,2
-};
+//    new Print(numbers);
 
-new Print(numbers);
 
-Console.WriteLine(@"
-Select Filtering Methord
+//    Console.WriteLine(@"
+//Select Options
+//Odd
+//Even
+//Positive");
 
-Odd
-Positive
-Even");
-var UserInput = Console.ReadLine();
-var Result = new List<int>();
+//    var UserInput = Console.ReadLine();
+//    var Result = new List<int>();
 
- 
-NumberFilter filter = new NumberFilter();
 
-filter.FilterBy(UserInput,numbers);
-new Print(Result);
+//    NumberFilter filter = new NumberFilter();
+
+
+//    new Print(filter.FilterBy(UserInput, numbers));
+
+//}catch(NotSupportedException ex)
+//{
+//    Console.WriteLine(ex.Message);
+//    Console.ReadLine();
+//}
+
+
+
+//public class NumberFilter
+//{
+
+//    public List<int> FilterBy(string FilteringType,IEnumerable<int> numbers)
+//    {
+
+//            switch (FilteringType)
+//            {
+//                case "Odd":
+//                    return Select(numbers, numbers => numbers % 2 == 0);
+
+//                case "Positive":
+//                    return Select(numbers, numbers => numbers > 0);
+
+
+//                case "Even":
+//                    return Select(numbers, numbers => numbers % 2 == 1);
+//                default:
+//                    throw new NotSupportedException($"{FilteringType} is not valied filtering");
+
+//            }
+
+//            List<int> Select(IEnumerable<int> numbers, Func<int, bool> predicate)
+//            {
+//                var OddResult = new List<int>();
+//                foreach (var item in numbers)
+//                {
+//                    if (predicate(item))
+//                    {
+//                        OddResult.Add(item);
+//                    }
+
+//                }
+//                return OddResult;
+//            }
+
+
+
+
+//        return null;
+//    }
+//}
+//public class Print
+//{
+//    public Print(IEnumerable<int> numbers)
+//    {
+//        var result = string.Join(",", numbers);
+//        Console.WriteLine(result);
+//    }
+//}
+
+//Cashing////////////////////////////////////////////////////////////////////////
+
+Console.WriteLine();
+
 Console.ReadLine();
 
-public class NumberFilter
+public interface IDataDownloader
 {
-    public List<int> FilterBy(string FilteringType,IEnumerable<int> numbers)
-    {
-
-        switch (FilteringType)
-        {
-            case "Odd":
-               return SelectOdd(numbers);
-               
-            case "Positive":
-                return SelectPositive(numbers);
-                
-            case "Even":
-                return SelectEven(numbers);
-                
-        }
-
-        List<int> SelectOdd(IEnumerable<int> numbers)
-        {
-            var OddResult = new List<int>();
-            foreach (var item in numbers)
-            {
-                if (item % 2 == 1)
-                {
-                    OddResult.Add(item);
-                }
-
-            }
-            return OddResult;
-        }
-
-        List<int> SelectPositive(IEnumerable<int> numbers)
-        {
-            var positiveResult = new List<int>();
-            foreach (var item in numbers)
-            {
-                if (item > 0)
-                {
-                    positiveResult.Add(item);
-                }
-
-            }
-            return positiveResult;
-        }
-        List<int> SelectEven(IEnumerable<int> numbers)
-        {
-            var EvenResult = new List<int>();
-            foreach (var item in numbers)
-            {
-                if (item % 2 == 0)
-                {
-                    EvenResult.Add(item);
-                }
-
-            }
-            return EvenResult;
-        }
-        return null;
-    }
+    public string DownloadData(string resourceId);
 }
-public class Print
+public class DataDownloader
 {
-    public Print(IEnumerable<int> numbers)
+    public string Id1 {  get; set; }
+    public DataDownloader()
     {
-        var result = string.Join(",", numbers);
-        Console.WriteLine(result);
+        
     }
 }
