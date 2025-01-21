@@ -568,8 +568,14 @@ Console.WriteLine("Generic Types...............\n\n");
 //}
 
 //Cashing////////////////////////////////////////////////////////////////////////
+SlowDataDownloder slowDataDownloder = new SlowDataDownloder();
 
-Console.WriteLine();
+Console.WriteLine(slowDataDownloder.DownloadData("id1"));
+Console.WriteLine(slowDataDownloder.DownloadData("id2"));
+Console.WriteLine(slowDataDownloder.DownloadData("id3"));
+Console.WriteLine(slowDataDownloder.DownloadData("id1"));
+Console.WriteLine(slowDataDownloder.DownloadData("id6"));
+Console.WriteLine(slowDataDownloder.DownloadData("id3"));
 
 Console.ReadLine();
 
@@ -577,11 +583,11 @@ public interface IDataDownloader
 {
     public string DownloadData(string resourceId);
 }
-public class DataDownloader
+public class SlowDataDownloder : IDataDownloader
 {
-    public string Id1 {  get; set; }
-    public DataDownloader()
+    public string DownloadData(string resourceId)
     {
-        
+        Thread.Sleep(1000);
+        return $"Some data for {resourceId}";
     }
 }
