@@ -26,7 +26,7 @@ var PetDetails = new List<Pet>
     new Pet(3,"sudeera",6.3f),
     new Pet(4,"suranga",7.3f),
     new Pet(5,"pradeep",9.3f),
-    new Pet(6,"sampath1",13f),
+    new Pet(6,"sampath",13f),
     new Pet(7,"sampath5",1.5f),
     new Pet(8,"",2.5f)
 };
@@ -35,7 +35,11 @@ var isThereAnyCollection = PetDetails.Any(pet => pet.Name == "sampath");
 
 var isAllNotEmtyName = PetDetails.All(pet => !string.IsNullOrEmpty(pet.Name));
 
-Console.WriteLine(string.Join(",", isAllNotEmtyName));
+var howManyItems = PetDetails.Count(pet => pet.Name == "sampath");
+
+var allElemet = PetDetails.Count();
+
+Console.WriteLine(allElemet);
 
 Console.ReadLine();
 
