@@ -1,4 +1,4 @@
-﻿
+﻿// using Any<> // All<> // count<> // where<> // contains<>
 using System.Threading.Channels;
 
 var words = new List<string>
@@ -15,6 +15,9 @@ foreach (var item in wordLongerThenTwoLatter)
 Console.WriteLine();
 var number = new int[] { 7,10, 50,80,1, 2, 3, 4, 5, 6, 8 };
 
+bool is800present = number.Contains(80);
+
+Console.WriteLine(is800present);
 var allNumbersLagerThen0 = number.All(numb => numb > 0);
 
 //Console.WriteLine(string.Join(",",allNumbersLagerThen0)); // It also return bool value 
@@ -39,7 +42,7 @@ var howManyItems = PetDetails.Count(pet => pet.Name == "sampath");
 
 var allElemet = PetDetails.Count();
 
-Console.WriteLine(allElemet);
+Console.WriteLine();
 
 Console.ReadLine();
 
