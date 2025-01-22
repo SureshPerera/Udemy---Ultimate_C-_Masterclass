@@ -8,16 +8,12 @@ var words = new List<string>
 
 var wordLongerThenTwoLatter = words.Where(word => word.Length > 2);
 
-foreach (var item in wordLongerThenTwoLatter)
-{
-    Console.WriteLine(item);
-}
-Console.WriteLine();
+
 var number = new int[] { 7,10, 50,80,1, 2, 3, 4, 5, 6, 8 };
 
 bool is800present = number.Contains(80);
 
-Console.WriteLine(is800present);
+//Console.WriteLine(is800present);
 var allNumbersLagerThen0 = number.All(numb => numb > 0);
 
 //Console.WriteLine(string.Join(",",allNumbersLagerThen0)); // It also return bool value 
@@ -33,6 +29,20 @@ var PetDetails = new List<Pet>
     new Pet(7,"sampath5",1.5f),
     new Pet(8,"",2.5f)
 };
+
+var petColletionByPetName = PetDetails.OrderByDescending(pets => pets.Name).ThenBy(pet => pet.Hight);
+
+foreach(var order in petColletionByPetName)
+{
+
+Console.WriteLine($"{order.Id} - {order.Name} - {order.Hight}");
+}
+Console.WriteLine("......................................................");
+foreach (var order in PetDetails)
+{
+
+    Console.WriteLine($"{order.Id} - {order.Name} - {order.Hight}");
+}
 
 var isThereAnyCollection = PetDetails.Any(pet => pet.Name == "sampath");
 
