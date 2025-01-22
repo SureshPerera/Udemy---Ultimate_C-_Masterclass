@@ -1,4 +1,4 @@
-﻿// using Any<> // All<> // count<> // where<> // contains<>
+﻿// using Any<> // All<> // count<> // where<> // contains<> // OrderBy<> // 
 using System.Threading.Channels;
 
 var words = new List<string>
@@ -9,8 +9,11 @@ var words = new List<string>
 var wordLongerThenTwoLatter = words.Where(word => word.Length > 2);
 
 
-var number = new int[] { 7,10, 50,80,1, 2, 3, 4, 5, 6, 8 };
+var number = new int[] { 7,10, 10,80,1, 2, 2, 4, 5, 6, 8 };
 
+var removeRepeatItem = number.Distinct();
+
+//Console.WriteLine(string.Join(",",removeRepeatItem));
 bool is800present = number.Contains(80);
 
 //Console.WriteLine(is800present);
@@ -30,19 +33,17 @@ var PetDetails = new List<Pet>
     new Pet(8,"",2.5f)
 };
 
+var removeItems = PetDetails.DistinctBy(pets => pets.Name).ToList();
+
+foreach(var item in removeItems){
+
+Console.WriteLine(item.Name);
+}
 var petColletionByPetName = PetDetails.OrderByDescending(pets => pets.Name).ThenBy(pet => pet.Hight);
 
-foreach(var order in petColletionByPetName)
-{
+var firstElement = PetDetails.First();
 
-Console.WriteLine($"{order.Id} - {order.Name} - {order.Hight}");
-}
-Console.WriteLine("......................................................");
-foreach (var order in PetDetails)
-{
-
-    Console.WriteLine($"{order.Id} - {order.Name} - {order.Hight}");
-}
+//Console.WriteLine(string.Join(",",firstElement.Id));
 
 var isThereAnyCollection = PetDetails.Any(pet => pet.Name == "sampath");
 
