@@ -15,6 +15,10 @@ foreach (var item in wordLongerThenTwoLatter)
 Console.WriteLine();
 var number = new int[] { 7,10, 50,80,1, 2, 3, 4, 5, 6, 8 };
 
+var allNumbersLagerThen0 = number.All(numb => numb > 0);
+
+//Console.WriteLine(string.Join(",",allNumbersLagerThen0)); // It also return bool value 
+
 var PetDetails = new List<Pet>
 {
     new Pet(1,"sampath",3.5f),
@@ -24,11 +28,14 @@ var PetDetails = new List<Pet>
     new Pet(5,"pradeep",9.3f),
     new Pet(6,"sampath1",13f),
     new Pet(7,"sampath5",1.5f),
+    new Pet(8,"",2.5f)
 };
 
 var isThereAnyCollection = PetDetails.Any(pet => pet.Name == "sampath");
 
-Console.WriteLine(string.Join(",",isThereAnyCollection));
+var isAllNotEmtyName = PetDetails.All(pet => !string.IsNullOrEmpty(pet.Name));
+
+Console.WriteLine(string.Join(",", isAllNotEmtyName));
 
 Console.ReadLine();
 
