@@ -49,6 +49,12 @@ decimal nums = num;
 decimal cases = 10.5m;
 int item = (int)cases;
 
-Console.WriteLine(item);
+int s = 10.GetHashCode();
+
+var a = "suresh".GetHashCode();
+var b = "sures".GetHashCode();
+
+Console.WriteLine(s);
+Console.WriteLine(a + " \n" + b);
 
 Console.ReadLine();
