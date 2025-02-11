@@ -67,25 +67,25 @@
 //Console.WriteLine(tuple2);
 
 
-using System.Security.Cryptography.X509Certificates;
+//using System.Security.Cryptography.X509Certificates;
 
-var weatherdatas = new WeatherData(20.5m,10,"kamalajith");
-var timeManageCalculator = new TimeManageCalculation(10, "suranga");
+//var weatherdatas = new WeatherData(20.5m,10,"kamalajith");
+//var timeManageCalculator = new TimeManageCalculation(10, "suranga");
 
-var timeManageCalculator1 = timeManageCalculator with { timeExpend = 580 };
+//var timeManageCalculator1 = timeManageCalculator with { timeExpend = 580 };
 
-//Console.WriteLine(weatherdatas.Himidity == timeManageCalculator.timeExpend);
-Console.WriteLine();
+////Console.WriteLine(weatherdatas.Himidity == timeManageCalculator.timeExpend);
+//Console.WriteLine();
 
-var studentRecord = new StudentRecords(001,"Suranga",new DateOnly(2000,03,12));
-studentRecord.dob = new DateOnly(2001, 04, 05);
+//var studentRecord = new StudentRecords(001,"Suranga",new DateOnly(2000,03,12));
+//studentRecord.dob = new DateOnly(2001, 04, 05);
 
 
-Console.WriteLine(studentRecord);
-Console.ReadLine();
-public  record struct StudentRecords (int id, string name, DateOnly dob);
-public record WeatherData (decimal Temperage, int Himidity, string name);
-public record TimeManageCalculation(int timeExpend,string nameHowExpend);
+//Console.WriteLine(studentRecord);
+//Console.ReadLine();
+//public  record struct StudentRecords (int id, string name, DateOnly dob);
+//public record WeatherData (decimal Temperage, int Himidity, string name);
+//public record TimeManageCalculation(int timeExpend,string nameHowExpend);
 
 //public class WeatherData : IEquatable<WeatherData?>
 //{
@@ -127,3 +127,42 @@ public record TimeManageCalculation(int timeExpend,string nameHowExpend);
 //        return !(left == right);
 //    }
 //}
+
+//var height = new List<Nullable<int>>
+//{
+//    160,50,158,80
+//};
+
+//var avarageHight = height.Where(hight => height is not null ).
+//    Average();
+//var sumHight = height.Where(hight => hight is not null).Sum();
+
+//Console.WriteLine($"Avarage Hight is : {avarageHight}");
+//Console.WriteLine($"Sum of Hight is : {sumHight}");
+
+//string? IsNullName = null;
+
+//Console.WriteLine(IsNullName);
+
+//creating API Potel////////////////////////////////////////
+
+using var client = new HttpClient();
+
+client.BaseAddress = new Uri("https://datausa.io/api/");
+
+HttpRequestMessage message = new HttpRequestMessage();
+
+var response = await client.GetAsync(
+    "data?drilldowns=Nation&measures=Population");
+
+response.EnsureSuccessStatusCode();
+string json = await response.Content.ReadAsStringAsync();
+var list = new List<string>();
+foreach (var item in json)
+{
+    Console.WriteLine(string.Join(Environment.NewLine, item));
+}
+ 
+
+
+Console.ReadLine();
