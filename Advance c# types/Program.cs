@@ -59,11 +59,62 @@
 
 //tuple//////////////////////////
 
-var tuple1 = new Tuple<string, bool,string>("suresh", true,"gamlath");
-var tuple2 = Tuple.Create(10, true,"suresh",5000);
-var number  = tuple1.Item2;
+//var tuple1 = new Tuple<string, bool,string>("suresh", true,"gamlath");
+//var tuple2 = Tuple.Create(10, true,"suresh",5000);
+//var number  = tuple1.Item2;
 
 
-Console.WriteLine(tuple2);
+//Console.WriteLine(tuple2);
+
+
+using System.Security.Cryptography.X509Certificates;
+
+var weatherdatas = new WeatherData(20.5m,10,"kamalajith");
+var timeManageCalculator = new TimeManageCalculation(10, "suranga");
+Console.WriteLine(weatherdatas.Himidity == timeManageCalculator.timeExpend);
+Console.WriteLine();
 
 Console.ReadLine();
+public record WeatherData (decimal Temperage, int Himidity, string name);
+public record TimeManageCalculation(int timeExpend,string nameHowExpend);
+
+//public class WeatherData : IEquatable<WeatherData?>
+//{
+//    public decimal Temperage { get; }
+//    public int Himidity { get; }
+
+//    public WeatherData(decimal temperage, int himidity)
+//    {
+//        Temperage = temperage;
+//        Himidity = himidity;
+//    }
+//    public override string ToString() =>
+//        $"temparage : {Temperage}, himidity : {Himidity}";
+
+//    public override bool Equals(object? obj)
+//    {
+//        return Equals(obj as WeatherData);
+//    }
+
+//    public bool Equals(WeatherData? other)
+//    {
+//        return other is not null &&
+//               Temperage == other.Temperage &&
+//               Himidity == other.Himidity;
+//    }
+
+//    public override int GetHashCode()
+//    {
+//        return HashCode.Combine(Temperage, Himidity);
+//    }
+
+//    public static bool operator ==(WeatherData? left, WeatherData? right)
+//    {
+//        return EqualityComparer<WeatherData>.Default.Equals(left, right);
+//    }
+
+//    public static bool operator !=(WeatherData? left, WeatherData? right)
+//    {
+//        return !(left == right);
+//    }
+//}
