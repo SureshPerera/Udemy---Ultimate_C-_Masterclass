@@ -71,10 +71,19 @@ using System.Security.Cryptography.X509Certificates;
 
 var weatherdatas = new WeatherData(20.5m,10,"kamalajith");
 var timeManageCalculator = new TimeManageCalculation(10, "suranga");
-Console.WriteLine(weatherdatas.Himidity == timeManageCalculator.timeExpend);
+
+var timeManageCalculator1 = timeManageCalculator with { timeExpend = 580 };
+
+//Console.WriteLine(weatherdatas.Himidity == timeManageCalculator.timeExpend);
 Console.WriteLine();
 
+var studentRecord = new StudentRecords(001,"Suranga",new DateOnly(2000,03,12));
+studentRecord.dob = new DateOnly(2001, 04, 05);
+
+
+Console.WriteLine(studentRecord);
 Console.ReadLine();
+public  record struct StudentRecords (int id, string name, DateOnly dob);
 public record WeatherData (decimal Temperage, int Himidity, string name);
 public record TimeManageCalculation(int timeExpend,string nameHowExpend);
 
