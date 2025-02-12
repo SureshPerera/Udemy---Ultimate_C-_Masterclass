@@ -146,23 +146,147 @@
 
 //creating API Potel////////////////////////////////////////
 
-using var client = new HttpClient();
+//using System.Text.Json;
+//using System.Text.Json.Serialization;
 
-client.BaseAddress = new Uri("https://datausa.io/api/");
+//string baseAddress = "https://datausa.io/api/";
+//string requistUri = "data?drilldowns=Nation&measures=Population";
 
-HttpRequestMessage message = new HttpRequestMessage();
+//IApiDataReader apiDataReader = new ApiDataReader();
+//var json =await apiDataReader.Read(baseAddress, requistUri);
 
-var response = await client.GetAsync(
-    "data?drilldowns=Nation&measures=Population");
+//var root = JsonSerializer.Deserialize<Root>(json);
 
-response.EnsureSuccessStatusCode();
-string json = await response.Content.ReadAsStringAsync();
-var list = new List<string>();
-foreach (var item in json)
+//foreach (var item in root.data)
+//{
+//    Console.WriteLine($" Year :{item.Year}, Population : {item.Population} ,National :{item.SlugNation}");
+//    Console.WriteLine();
+//}
+
+
+//Console.ReadLine();
+
+//public interface IApiDataReader
+//{
+//    Task<string> Read(string baseAddress, string requistUri);
+//}
+
+//public class ApiDataReader : IApiDataReader
+//{
+//    public async Task<string> Read(string baseAddress, string requistUri)
+//    {
+//        using var client = new HttpClient();
+
+//        client.BaseAddress = new Uri(baseAddress);
+
+//        HttpResponseMessage response = await client.GetAsync(requistUri);
+
+//        response.EnsureSuccessStatusCode();
+
+//        var json = await response.Content.ReadAsStringAsync();
+//        return json;
+//    }
+//}
+//public record Annotations(
+//        [property: JsonPropertyName("source_name")] string source_name,
+//        [property: JsonPropertyName("source_description")] string source_description,
+//        [property: JsonPropertyName("dataset_name")] string dataset_name,
+//        [property: JsonPropertyName("dataset_link")] string dataset_link,
+//        [property: JsonPropertyName("table_id")] string table_id,
+//        [property: JsonPropertyName("topic")] string topic,
+//        [property: JsonPropertyName("subtopic")] string subtopic
+//    );
+
+//public record Datum(
+//    [property: JsonPropertyName("ID Nation")] string IDNation,
+//    [property: JsonPropertyName("Nation")] string Nation,
+//    [property: JsonPropertyName("ID Year")] int IDYear,
+//    [property: JsonPropertyName("Year")] string Year,
+//    [property: JsonPropertyName("Population")] int Population,
+//    [property: JsonPropertyName("Slug Nation")] string SlugNation
+//);
+
+//public record Root(
+//    [property: JsonPropertyName("data")] IReadOnlyList<Datum> data,
+//    [property: JsonPropertyName("source")] IReadOnlyList<Source> source
+//);
+
+//public record Source(
+//    [property: JsonPropertyName("measures")] IReadOnlyList<string> measures,
+//    [property: JsonPropertyName("annotations")] Annotations annotations,
+//    [property: JsonPropertyName("name")] string name,
+//    [property: JsonPropertyName("substitutions")] IReadOnlyList<object> substitutions
+//);
+
+//job api rendering 
+using System.Diagnostics;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+var baseAddress = "https://jobicy.com/api/v2/";
+var requistUri = "remote-jobs?count=20&geo=usa&industry=marketing&tag=seo";
+
+IApiDataReader apiDataReader = new ApiDataReader();
+var json = await apiDataReader.Read(baseAddress, requistUri);
+
+var root = JsonSerializer.Deserialize<Root>(json);
+Stopwatch stopwatch = new Stopwatch();
+
+foreach (var item in root.jobs)
 {
-    Console.WriteLine(string.Join(Environment.NewLine, item));
+    Console.WriteLine($"{item.companyName} {item.companyLogo}");
 }
- 
+stopwatch.Stop();
 
 
 Console.ReadLine();
+
+public interface IApiDataReader
+{
+    Task<string> Read(string baseaddress, string requistUri);
+}
+
+public class ApiDataReader : IApiDataReader
+{
+    public async Task<string> Read(string baseaddress, string requistUri)
+    {
+        using var client = new HttpClient();
+        client.BaseAddress = new Uri(baseaddress);
+        HttpResponseMessage responce = await client.GetAsync(requistUri);
+        responce.EnsureSuccessStatusCode();
+
+        var json = await responce.Content.ReadAsStringAsync();
+        return json;
+    }
+}
+public record Job(
+        [property: JsonPropertyName("id")] int id,
+        [property: JsonPropertyName("url")] string url,
+        [property: JsonPropertyName("jobSlug")] string jobSlug,
+        [property: JsonPropertyName("jobTitle")] string jobTitle,
+        [property: JsonPropertyName("companyName")] string companyName,
+        [property: JsonPropertyName("companyLogo")] string companyLogo,
+        [property: JsonPropertyName("jobIndustry")] IReadOnlyList<string> jobIndustry,
+        [property: JsonPropertyName("jobType")] IReadOnlyList<string> jobType,
+        [property: JsonPropertyName("jobGeo")] string jobGeo,
+        [property: JsonPropertyName("jobLevel")] string jobLevel,
+        [property: JsonPropertyName("jobExcerpt")] string jobExcerpt,
+        [property: JsonPropertyName("jobDescription")] string jobDescription,
+        [property: JsonPropertyName("pubDate")] string pubDate,
+        [property: JsonPropertyName("annualSalaryMin")] int annualSalaryMin,
+        [property: JsonPropertyName("annualSalaryMax")] int annualSalaryMax,
+        [property: JsonPropertyName("salaryCurrency")] string salaryCurrency
+    );
+
+public record Root(
+    [property: JsonPropertyName("apiVersion")] string apiVersion,
+    [property: JsonPropertyName("documentationUrl")] string documentationUrl,
+    [property: JsonPropertyName("friendlyNotice")] string friendlyNotice,
+    [property: JsonPropertyName("jobCount")] int jobCount,
+    [property: JsonPropertyName("xRayHash")] string xRayHash,
+    [property: JsonPropertyName("clientKey")] string clientKey,
+    [property: JsonPropertyName("lastUpdate")] string lastUpdate,
+    [property: JsonPropertyName("jobs")] IReadOnlyList<Job> jobs
+);
+
+
