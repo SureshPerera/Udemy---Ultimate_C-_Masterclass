@@ -223,7 +223,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-var baseAddress = "https://jobicy.com/api/v2/";
+var baseAddress = "http://api.weatherapi.com/v1";
 var requistUri = "remote-jobs?count=20&geo=usa&industry=marketing&tag=seo";
 
 IApiDataReader apiDataReader = new ApiDataReader();
