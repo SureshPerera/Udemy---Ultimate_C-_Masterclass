@@ -141,17 +141,48 @@
 
 //Icillections //////////////////////////////////////////////////////////
 
-var array = new int[] { 5, 8, 4 };
-ICollection<int> list = new List<int> { 50,100};
-IReadOnlyCollection<int> collectionss = new int[] { 5, 8, 4 };
-
-collectionss
-list.Add(50);
+//var array = new int[] { 5, 8, 4 };
+//ICollection<int> list = new List<int> { 50,100};
+//IReadOnlyCollection<int> collectionss = new int[] { 5, 8, 4 };
 
 
-foreach (var item in list)
+//list.Add(50);
+
+
+//foreach (var item in list)
+//{
+//    Console.WriteLine(item);
+//}
+//Console.WriteLine();
+
+using System.Collections.ObjectModel;
+
+var planet = ReadPlannet();
+
+//planet.Clear();
+var dictionary = new Dictionary<string, int>
 {
-    Console.WriteLine(item);
+    ["suresh"] = 1,
+    ["suresh perera"] = 2,
+    ["suresh gamage"] = 3,
+};
+dictionary.Add("randika", 4);
+var readonlyCollection = new ReadOnlyDictionary<string, int>(dictionary);
+readonlyCollection.
+foreach (var item in readonlyCollection)
+{
+    Console.WriteLine($"{item.Value}......{item.Key}");
 }
 Console.WriteLine();
+
 Console.ReadLine();
+
+IEnumerable<string> ReadPlannet()
+{
+    var results = new List<string>
+    {
+        "suresh",
+        "perera"
+    };
+    return results;
+}
