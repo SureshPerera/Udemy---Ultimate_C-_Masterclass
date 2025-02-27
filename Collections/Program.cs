@@ -155,34 +155,65 @@
 //}
 //Console.WriteLine();
 
-using System.Collections.ObjectModel;
+//using System.Collections.ObjectModel;
 
-var planet = ReadPlannet();
+//var planet = ReadPlannet();
 
-//planet.Clear();
-var dictionary = new Dictionary<string, int>
+////planet.Clear();
+//var dictionary = new Dictionary<string, int>
+//{
+//    ["suresh"] = 1,
+//    ["suresh perera"] = 2,
+//    ["suresh gamage"] = 3,
+//};
+//dictionary.Add("randika", 4);
+//var readonlyCollection = new ReadOnlyDictionary<string, int>(dictionary);
+//readonlyCollection.
+//foreach (var item in readonlyCollection)
+//{
+//    Console.WriteLine($"{item.Value}......{item.Key}");
+//}
+//Console.WriteLine();
+
+//Console.ReadLine();
+
+//IEnumerable<string> ReadPlannet()
+//{
+//    var results = new List<string>
+//    {
+//        "suresh",
+//        "perera"
+//    };
+//    return results;
+//}
+
+List<string> CustomerName = new List<string>
 {
-    ["suresh"] = 1,
-    ["suresh perera"] = 2,
-    ["suresh gamage"] = 3,
+    "gamlath",
+    "Pradep"
 };
-dictionary.Add("randika", 4);
-var readonlyCollection = new ReadOnlyDictionary<string, int>(dictionary);
-readonlyCollection.
-foreach (var item in readonlyCollection)
+Console.Write("Enter name :");
+string checkItem = Console.ReadLine();
+
+if(Contains(checkItem, CustomerName) == true)
 {
-    Console.WriteLine($"{item.Value}......{item.Key}");
+    Console.WriteLine("This item is already exits");
 }
-Console.WriteLine();
-
-Console.ReadLine();
-
-IEnumerable<string> ReadPlannet()
+else
 {
-    var results = new List<string>
+    Console.WriteLine("You can Add this item");
+}
+
+
+bool Contains<T>(T itemToCheck, IEnumerable<T> input)
+{
+    foreach (var item in input)
     {
-        "suresh",
-        "perera"
-    };
-    return results;
+        if (item.Equals(itemToCheck))
+        {
+            return true;
+        }
+    }
+    return false;
 }
+Console.ReadLine();
